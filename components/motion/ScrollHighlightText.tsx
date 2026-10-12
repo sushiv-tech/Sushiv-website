@@ -37,8 +37,8 @@ function Word({
   progress: MotionValue<number>
   range: [number, number]
 }) {
-  const opacity = useTransform(progress, range, [0.18, 1])
-  const color = useTransform(progress, range, ['#94a3b8', '#0f172a'])
+  const opacity = useTransform(progress, range, [0.35, 1])
+  const color = useTransform(progress, range, ['#64748b', '#0f172a'])
 
   return (
     <span className="mr-[0.28em] my-[0.05em] inline-block">
