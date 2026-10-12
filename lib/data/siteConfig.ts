@@ -25,7 +25,7 @@ export const siteConfig = {
   contact: {
     whatsappNumber: '919579928503',
     whatsappDisplay: '+91 95799 28503',
-    email: 'info@sushiv.in',
+    email: 'admin@sushiv.in',
     workingHours: 'Mon to Sat, 10:00 AM to 7:00 PM IST',
   },
   social: {
