@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import {
   ChevronDown,
@@ -47,10 +48,20 @@ const productIcons: Record<string, React.ReactNode> = {
   Shirt: <Shirt className="w-4 h-4 text-pink-400" />,
 }
 
+const mobileLinks = [
+  { href: '/industries', label: 'Industries' },
+  { href: '/how-we-work', label: 'How We Work' },
+  { href: '/case-studies', label: 'Case Studies' },
+  { href: '/about-us', label: 'About Us' },
+  { href: '/careers', label: 'Careers' },
+  { href: '/faq', label: 'FAQ' },
+]
+
 export function Navbar() {
   const pathname = usePathname()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<'services' | 'products' | null>(null)
+  const [mobileSection, setMobileSection] = useState<'services' | 'products' | null>(null)
   const [isScrolled, setIsScrolled] = useState(false)
   const navRef = useRef<HTMLElement>(null)
 
@@ -65,8 +76,17 @@ export function Navbar() {
   // Close menus on route change
   useEffect(() => {
     setMobileMenuOpen(false)
+    setMobileSection(null)
     setActiveDropdown(null)
   }, [pathname])
+
+  // Lock page scroll behind the open mobile menu
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [mobileMenuOpen])
 
   // Close dropdown on click outside
   useEffect(() => {
@@ -92,9 +112,14 @@ export function Navbar() {
         <div className="flex items-center justify-between">
           {/* Brand Logo */}
           <Link href="/" className="group flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 via-blue-500 to-blue-700 flex items-center justify-center font-bold text-white shadow-md shadow-blue-500/25 group-hover:shadow-blue-500/40 transition-all">
-              <span className="text-lg tracking-wider">S</span>
-            </div>
+            <Image
+              src="/logo.png"
+              alt="Sushiv Technologies logo"
+              width={40}
+              height={40}
+              priority
+              className="w-10 h-10 transition-transform group-hover:scale-105"
+            />
             <div className="flex flex-col">
               <span className="text-xl font-bold tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors">
                 SUSHIV
@@ -360,94 +385,127 @@ export function Navbar() {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-x-0 top-[65px] bottom-0 bg-white/95 backdrop-blur-2xl border-b border-slate-200 px-4 py-6 overflow-y-auto shadow-xl">
-          <div className="space-y-4">
-            <div className="space-y-1">
-              <Link
-                href="/services"
-                className="block px-3 py-2 text-base font-bold text-slate-900 rounded-lg hover:bg-slate-50"
+        // Positioned relative to the header: its backdrop-blur makes it the containing
+        // block for fixed children, so `fixed bottom-0` would collapse to the header height.
+        <div className="lg:hidden absolute inset-x-0 top-full h-[calc(100dvh-4.5rem)] bg-white border-t border-slate-200 px-4 pt-2 pb-24 overflow-y-auto overscroll-contain shadow-xl">
+          <nav className="flex flex-col" aria-label="Mobile Navigation">
+            {/* Services accordion */}
+            <div className="border-b border-slate-100">
+              <button
+                type="button"
+                onClick={() => setMobileSection(mobileSection === 'services' ? null : 'services')}
+                className={`w-full flex items-center justify-between px-2 py-3.5 text-base font-medium ${
+                  pathname.startsWith('/services') ? 'text-blue-600' : 'text-slate-800'
+                }`}
+                aria-expanded={mobileSection === 'services'}
               >
-                Services (All 10)
-              </Link>
-              <div className="grid grid-cols-2 gap-1.5 pl-3 pt-1">
-                {servicesData.map((service) => (
+                Services
+                <ChevronDown
+                  className={`w-4 h-4 transition-transform duration-200 ${
+                    mobileSection === 'services' ? 'rotate-180 text-blue-600' : 'text-slate-400'
+                  }`}
+                />
+              </button>
+              {mobileSection === 'services' && (
+                <div className="pb-3 space-y-4">
+                  {servicePillars.map((pillar) => {
+                    const pillarServices = servicesData.filter((s) => s.pillar === pillar.id)
+                    return (
+                      <div key={pillar.id}>
+                        <div className="flex items-center gap-2 px-2 pb-1">
+                          {pillarIcons[pillar.id]}
+                          <span className="text-[11px] font-semibold tracking-wider uppercase text-slate-500">
+                            {pillar.name}
+                          </span>
+                        </div>
+                        {pillarServices.map((service) => (
+                          <Link
+                            key={service.slug}
+                            href={`/services/${service.slug}`}
+                            className={`block px-2 pl-8 py-2.5 text-sm rounded-lg hover:bg-slate-50 ${
+                              pathname === `/services/${service.slug}`
+                                ? 'text-blue-600 font-medium'
+                                : 'text-slate-600'
+                            }`}
+                          >
+                            {service.title}
+                          </Link>
+                        ))}
+                      </div>
+                    )
+                  })}
                   <Link
-                    key={service.slug}
-                    href={`/services/${service.slug}`}
-                    className="text-xs font-medium text-slate-600 hover:text-blue-600 py-1"
+                    href="/services"
+                    className="flex items-center gap-1 px-2 py-2 text-sm font-semibold text-blue-600"
                   >
-                    • {service.title}
+                    Explore all services
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
-                ))}
-              </div>
+                </div>
+              )}
             </div>
 
-            <div className="space-y-1 pt-2 border-t border-slate-100">
-              <div className="px-3 text-xs font-bold uppercase text-blue-600 tracking-wider">
-                Products & Systems
-              </div>
-              <div className="grid grid-cols-2 gap-1.5 pl-3 pt-2">
-                {productsData.map((prod) => (
-                  <Link
-                    key={prod.id}
-                    href={prod.targetServiceUrl}
-                    className="text-xs font-medium text-slate-500 hover:text-blue-600 py-1"
-                  >
-                    • {prod.title}
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            <div className="space-y-1 pt-2 border-t border-slate-100">
-              <Link
-                href="/industries"
-                className="block px-3 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-lg"
+            {/* Products accordion */}
+            <div className="border-b border-slate-100">
+              <button
+                type="button"
+                onClick={() => setMobileSection(mobileSection === 'products' ? null : 'products')}
+                className="w-full flex items-center justify-between px-2 py-3.5 text-base font-medium text-slate-800"
+                aria-expanded={mobileSection === 'products'}
               >
-                Industries We Serve
-              </Link>
-              <Link
-                href="/how-we-work"
-                className="block px-3 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-lg"
-              >
-                How We Work
-              </Link>
-              <Link
-                href="/case-studies"
-                className="block px-3 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-lg"
-              >
-                Case Studies
-              </Link>
-              <Link
-                href="/about-us"
-                className="block px-3 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-lg"
-              >
-                About Us
-              </Link>
-              <Link
-                href="/careers"
-                className="flex items-center justify-between px-3 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-lg"
-              >
-                <span>Careers</span>
-                <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-600 border border-emerald-200">
-                  Hiring
+                <span className="flex items-center gap-2">
+                  Products
+                  <span className="text-[10px] font-semibold uppercase px-1.5 py-0.5 rounded-full bg-blue-100 text-blue-600 border border-blue-200">
+                    Solutions
+                  </span>
                 </span>
-              </Link>
-              <Link
-                href="/faq"
-                className="block px-3 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-lg"
-              >
-                FAQ
-              </Link>
+                <ChevronDown
+                  className={`w-4 h-4 transition-transform duration-200 ${
+                    mobileSection === 'products' ? 'rotate-180 text-blue-600' : 'text-slate-400'
+                  }`}
+                />
+              </button>
+              {mobileSection === 'products' && (
+                <div className="pb-3">
+                  {productsData.map((prod) => (
+                    <Link
+                      key={prod.id}
+                      href={prod.targetServiceUrl}
+                      className="flex items-center gap-3 px-2 py-2.5 text-sm text-slate-600 rounded-lg hover:bg-slate-50"
+                    >
+                      {productIcons[prod.iconName] || <Zap className="w-4 h-4 text-blue-600" />}
+                      {prod.title}
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
 
-            <div className="pt-4 border-t border-slate-100">
+            {mobileLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`flex items-center justify-between px-2 py-3.5 text-base font-medium border-b border-slate-100 ${
+                  pathname === link.href ? 'text-blue-600' : 'text-slate-800'
+                }`}
+              >
+                {link.label}
+                {link.href === '/careers' && (
+                  <span className="inline-flex items-center px-2 py-0.5 text-[10px] font-semibold uppercase rounded-full bg-emerald-100 text-emerald-600 border border-emerald-200">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 mr-1 animate-pulse" />
+                    Hiring
+                  </span>
+                )}
+              </Link>
+            ))}
+
+            <div className="pt-6">
               <Button href="/contact" variant="primary" size="md" className="w-full">
-                <span>Book a Consultation</span>
+                <span>Let&apos;s Talk</span>
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </div>
-          </div>
+          </nav>
         </div>
       )}
     </header>

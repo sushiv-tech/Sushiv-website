@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import {
   MapPin,
   Clock,
@@ -57,9 +58,7 @@ export function Footer() {
           {/* Brand & Address Column (2 spans on desktop) */}
           <div className="lg:col-span-2 space-y-5">
             <Link href="/" className="inline-flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center font-bold text-white shadow-md shadow-blue-500/30">
-                <span>S</span>
-              </div>
+              <Image src="/logo.png" alt="Sushiv Technologies logo" width={36} height={36} className="w-9 h-9" />
               <span className="text-xl font-bold tracking-tight text-slate-900">SUSHIV</span>
             </Link>
             <p className="text-sm text-slate-600 max-w-sm leading-relaxed">
