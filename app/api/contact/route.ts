@@ -26,6 +26,10 @@ export async function POST(req: Request) {
     const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY
     const resendApiKey = process.env.RESEND_API_KEY
 
+    // Unconfigured services only count as "success" outside production, so a missing
+    // env var can never make the form look like it worked while the lead is lost.
+    const isMockMode = process.env.NODE_ENV !== 'production'
+
     let dbOk = false
     let mailOk = false
 
@@ -70,7 +74,7 @@ export async function POST(req: Request) {
         description: d.description,
         preferredContact: d.preferredContact,
       })
-      dbOk = true
+      dbOk = isMockMode
     }
 
     // Attempt Resend email dispatch if configured
@@ -109,11 +113,13 @@ ${d.description}
       } catch (err) {
         console.error('[contact] Resend error:', err)
       }
-    } else {
+    } else if (isMockMode) {
       mailOk = true
+    } else {
+      console.error('[contact] RESEND_API_KEY is not set — no email was sent.')
     }
 
-    // Return success if at least one succeeded (or mock succeeded)
+    // Return success only if a real channel (DB or email) succeeded; mock mode is dev-only
     if (dbOk || mailOk) {
       return NextResponse.json({ ok: true })
     }
