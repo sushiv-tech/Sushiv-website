@@ -57,6 +57,12 @@ const leadershipTeam = [
     bio: 'Oversees operational governance, delivery execution, and client success across global engagements. Focused on operational rigor, continuous team development, and sustainable product impact.',
     image: '/images/team/supriya-kumari.jpeg',
   },
+  {
+    name: 'Ankit Singh',
+    role: 'CTO',
+    bio: 'Leads technology strategy, solution architecture, and engineering standards across every engagement. Focused on building secure, scalable systems and guiding the team through modern cloud, AI, and software practices.',
+    image: '/images/team/ankit-singh.jpeg',
+  },
 ]
 
 export default function AboutUsPage() {
@@ -192,7 +198,7 @@ export default function AboutUsPage() {
             </ScrollReveal>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {leadershipTeam.map((leader, idx) => (
               <ScrollReveal key={leader.name} delay={idx * 0.1}>
                 <div className="p-8 rounded-3xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xl transition-all space-y-5 flex flex-col justify-between h-full group">
@@ -203,7 +209,7 @@ export default function AboutUsPage() {
                         alt={leader.name}
                         fill
                         className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                        sizes="(max-width: 768px) 100vw, 50vw"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         priority
                       />
                     </div>
