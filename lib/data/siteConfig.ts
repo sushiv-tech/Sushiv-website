@@ -32,6 +32,7 @@ export const siteConfig = {
     facebook: 'https://www.facebook.com/share/1QNWixnbxe/',
     linkedin: 'https://in.linkedin.com/company/sushiv-technologies',
     instagram: 'https://www.instagram.com/sushiv.tech',
+    x: 'https://x.com/sushiv_tech',
   },
   navLinks: [
     { title: 'Services', href: '/services', hasDropdown: true, dropdownType: 'services' },
