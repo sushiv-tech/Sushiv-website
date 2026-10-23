@@ -29,10 +29,9 @@ export const siteConfig = {
     workingHours: 'Mon to Sat, 10:00 AM to 7:00 PM IST',
   },
   social: {
-    linkedin: 'https://linkedin.com/company/sushiv-technologies',
-    github: 'https://github.com/Sushiv',
-    twitter: 'https://twitter.com/SushivTech',
-    instagram: 'https://instagram.com/sushivtechnologies',
+    facebook: 'https://www.facebook.com/share/1QNWixnbxe/',
+    linkedin: 'https://in.linkedin.com/company/sushiv-technologies',
+    instagram: 'https://www.instagram.com/sushiv.tech',
   },
   navLinks: [
     { title: 'Services', href: '/services', hasDropdown: true, dropdownType: 'services' },

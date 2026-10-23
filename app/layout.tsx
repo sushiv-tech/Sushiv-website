@@ -72,6 +72,7 @@ export default function RootLayout({
     image: `${siteConfig.url}/og-image.png`,
     '@id': siteConfig.url,
     url: siteConfig.url,
+    sameAs: Object.values(siteConfig.social),
     telephone: '+919579928503',
     priceRange: '₹₹₹',
     address: {
