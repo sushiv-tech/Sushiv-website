@@ -249,9 +249,12 @@ export function Navbar() {
                           Production-tested software foundations ready to customize and deploy for your business.
                         </p>
                       </div>
-                      <span className="text-[10px] bg-slate-50 px-2.5 py-1 rounded-md text-slate-500 border border-slate-200 font-mono">
-                        9 Ready Systems
-                      </span>
+                      <Link
+                        href="/products"
+                        className="text-[10px] bg-slate-50 hover:bg-blue-50 px-2.5 py-1 rounded-md text-slate-500 hover:text-blue-600 border border-slate-200 hover:border-blue-200 font-mono transition-colors"
+                      >
+                        View all 9 systems →
+                      </Link>
                     </div>
 
                     {/* 3-Column Grid of 9 Products */}
@@ -477,6 +480,13 @@ export function Navbar() {
                       {prod.title}
                     </Link>
                   ))}
+                  <Link
+                    href="/products"
+                    className="flex items-center gap-1 px-2 py-2 text-sm font-semibold text-blue-600"
+                  >
+                    View all systems
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
                 </div>
               )}
             </div>

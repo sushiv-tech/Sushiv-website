@@ -7,6 +7,7 @@ import { QuickSelector } from '@/components/sections/QuickSelector'
 import { IndustriesGrid } from '@/components/sections/IndustriesGrid'
 import { HowWeWorkPreview } from '@/components/sections/HowWeWorkPreview'
 import { WhyChooseUs } from '@/components/sections/WhyChooseUs'
+import { Testimonials } from '@/components/sections/Testimonials'
 import { FAQPreview } from '@/components/sections/FAQPreview'
 import { CTASection } from '@/components/sections/CTASection'
 
@@ -37,10 +38,13 @@ export default function HomePage() {
       {/* 8. Why Sushiv (verifiable operational guarantees) */}
       <WhyChooseUs />
 
-      {/* 9. Top FAQs accordion */}
+      {/* 9. Client feedback (sample reviews until verified ones are collected; see lib/data/reviews.ts) */}
+      <Testimonials />
+
+      {/* 10. Top FAQs accordion */}
       <FAQPreview />
 
-      {/* 10. Final Conversion CTA & Reassurance */}
+      {/* 11. Final Conversion CTA & Reassurance */}
       <CTASection />
     </div>
   )

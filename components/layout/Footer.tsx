@@ -178,10 +178,10 @@ export function Footer() {
               ))}
               <li>
                 <Link
-                  href="/services"
+                  href="/products"
                   className="text-blue-600 hover:text-blue-700 font-medium inline-flex items-center gap-1"
                 >
-                  Custom Enterprise ERPs →
+                  All software systems →
                 </Link>
               </li>
             </ul>
