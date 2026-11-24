@@ -3,7 +3,19 @@ import { contactSchema } from '@/lib/schema'
 
 export async function POST(req: Request) {
   try {
-    const body = await req.json()
+    let body: unknown
+    try {
+      body = await req.json()
+    } catch {
+      return NextResponse.json({ ok: false, error: 'Invalid request body' }, { status: 400 })
+    }
+    // 1. Honeypot first: a bot that filled the hidden field gets a silent success, never a validation error
+    const hp = (body as { website?: unknown } | null)?.website
+    if (typeof hp === 'string' && hp.length > 0) {
+      console.warn('[contact] Honeypot triggered, ignoring submission.')
+      return NextResponse.json({ ok: true })
+    }
+
     const parsed = contactSchema.safeParse(body)
 
     if (!parsed.success) {
@@ -14,12 +26,6 @@ export async function POST(req: Request) {
     }
 
     const d = parsed.data
-
-    // 1. Honeypot check — if a bot filled the hidden website field, silently succeed without storing
-    if (d.website && d.website.length > 0) {
-      console.warn('[contact] Honeypot triggered, ignoring submission.')
-      return NextResponse.json({ ok: true })
-    }
 
     // 2. Server-side storage & email notification
     const supabaseUrl = process.env.SUPABASE_URL

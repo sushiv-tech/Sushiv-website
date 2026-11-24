@@ -21,7 +21,7 @@ import { ScrollReveal } from '@/components/motion/ScrollReveal'
 import { CTASection } from '@/components/sections/CTASection'
 
 export const metadata: Metadata = {
-  title: 'Software Systems: ERP, CRM, GST Billing & More | Sushiv Technologies',
+  title: 'Software Systems: ERP, CRM, GST Billing & More',
   description:
     'ERP, CRM, GST billing, e-commerce, school, hospital, franchise, exam and garment management systems from Sushiv Technologies, Pune. See what each one does and who it is for.',
 }

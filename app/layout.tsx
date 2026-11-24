@@ -20,6 +20,7 @@ export const metadata: Metadata = {
   },
   description:
     'Sushiv Technologies delivers custom software, mobile apps, AI & automation, and cloud solutions for startups and enterprises. Pune, India.',
+  alternates: { canonical: './' },
   keywords: [
     'custom software development',
     'software company pune',
@@ -41,17 +42,11 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    url: siteConfig.url,
+    url: './',
     siteName: siteConfig.name,
-    title: 'Sushiv Technologies | Custom Software, Mobile App & AI Development',
-    description:
-      'Sushiv Technologies delivers custom software, mobile apps, AI, and cloud solutions for startups and enterprises. Build smarter, scale faster.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Sushiv Technologies | Custom Software, Mobile App & AI Development',
-    description:
-      'Custom software, mobile apps, AI, and cloud solutions for startups and enterprises.',
   },
   robots: {
     index: true,
@@ -69,7 +64,7 @@ export default function RootLayout({
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     name: 'Sushiv Technologies LLP',
-    image: `${siteConfig.url}/og-image.png`,
+    image: `${siteConfig.url}/opengraph-image`,
     '@id': siteConfig.url,
     url: siteConfig.url,
     sameAs: Object.values(siteConfig.social),

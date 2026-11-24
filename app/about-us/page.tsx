@@ -16,7 +16,7 @@ import { buildWhatsAppLink } from '@/lib/whatsapp'
 import { CTASection } from '@/components/sections/CTASection'
 
 export const metadata: Metadata = {
-  title: 'About Us | Software Development Team in Pune | Sushiv Technologies',
+  title: 'About Us | Software Development Team in Pune',
   description:
     'Learn about Sushiv Technologies LLP: our engineering philosophy, mission, values, and leadership based in Hadapsar, Pune.',
 }

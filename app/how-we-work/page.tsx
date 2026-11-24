@@ -18,7 +18,7 @@ import { ScrollReveal } from '@/components/motion/ScrollReveal'
 import { CTASection } from '@/components/sections/CTASection'
 
 export const metadata: Metadata = {
-  title: 'How We Work | Software Delivery Process | Sushiv Technologies',
+  title: 'How We Work | Software Delivery Process',
   description:
     'Our transparent 5-step agile engineering lifecycle: Discover, Design, Develop, Deploy, and Support.',
 }

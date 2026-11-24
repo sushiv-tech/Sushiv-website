@@ -13,7 +13,7 @@ import { Button } from '@/components/ui/Button'
 import { CTASection } from '@/components/sections/CTASection'
 
 export const metadata: Metadata = {
-  title: 'Careers & Tech Internships in Pune | Sushiv Technologies',
+  title: 'Careers & Tech Internships in Pune',
   description:
     'Join Sushiv Technologies in Hadapsar, Pune. Explore full-time software engineering roles and hands-on industry internships in Web, Mobile, AI, and Cybersecurity.',
 }

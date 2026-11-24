@@ -14,7 +14,7 @@ import { ScrollReveal } from '@/components/motion/ScrollReveal'
 import { CTASection } from '@/components/sections/CTASection'
 
 export const metadata: Metadata = {
-  title: 'Services & Solutions | Sushiv Technologies',
+  title: 'Services & Solutions',
   description:
     'End-to-end IT services: custom software development, website designing, mobile apps, AI-ML solutions, cyber security, data analytics, SEO, and digital marketing.',
 }

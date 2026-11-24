@@ -9,7 +9,7 @@ import { ScrollReveal } from '@/components/motion/ScrollReveal'
 import { CTASection } from '@/components/sections/CTASection'
 
 export const metadata: Metadata = {
-  title: 'Frequently Asked Questions | Sushiv Technologies',
+  title: 'Frequently Asked Questions',
   description:
     'Answers to common questions about working with Sushiv Technologies: pricing, code ownership, NDA, sprint communication, and post-launch maintenance.',
 }

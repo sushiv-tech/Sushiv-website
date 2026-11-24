@@ -1,4 +1,5 @@
 import React from 'react'
+import { siteConfig } from '@/lib/data/siteConfig'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -40,18 +41,21 @@ export function generateMetadata({ params }: ServicePageProps): Metadata {
   const service = servicesData.find((s) => s.slug === params.slug)
   if (!service) {
     return {
-      title: 'Service Not Found | Sushiv Technologies',
+      title: 'Service Not Found',
     }
   }
 
   return {
-    title: `${service.title} Services in Pune | Sushiv Technologies`,
+    title: `${service.title} Services in Pune`,
     description: service.shortDescription,
     openGraph: {
       title: `${service.title} | Sushiv Technologies LLP`,
       description: service.shortDescription,
-      url: `https://sushiv.in/services/${service.slug}`,
+      url: `${siteConfig.url}/services/${service.slug}`,
       type: 'website',
+      locale: 'en_IN',
+      siteName: 'Sushiv Technologies',
+      images: ['/opengraph-image'],
     },
   }
 }

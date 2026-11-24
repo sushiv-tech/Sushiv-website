@@ -19,7 +19,7 @@ import { ScrollReveal } from '@/components/motion/ScrollReveal'
 import { CTASection } from '@/components/sections/CTASection'
 
 export const metadata: Metadata = {
-  title: 'Industries We Serve | Sushiv Technologies',
+  title: 'Industries We Serve',
   description:
     'Custom software and digital transformation tailored for healthcare, fintech, e-commerce, real estate, education, logistics, travel, and manufacturing.',
 }

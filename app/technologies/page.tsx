@@ -8,7 +8,7 @@ import { ScrollReveal } from '@/components/motion/ScrollReveal'
 import { CTASection } from '@/components/sections/CTASection'
 
 export const metadata: Metadata = {
-  title: 'Technologies & Tools We Work With | Sushiv Technologies',
+  title: 'Technologies & Tools We Work With',
   description:
     'Our engineering tech stack across Frontend, Backend, Mobile, Cloud, DevOps, Databases, AI/ML, and UI/UX design systems.',
 }

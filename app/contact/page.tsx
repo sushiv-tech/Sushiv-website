@@ -14,7 +14,7 @@ import { siteConfig } from '@/lib/data/siteConfig'
 import { buildWhatsAppLink } from '@/lib/whatsapp'
 
 export const metadata: Metadata = {
-  title: 'Contact Sushiv Technologies | Book a Free Consultation in Pune',
+  title: 'Contact Us | Book a Free Consultation in Pune',
   description:
     'Contact Sushiv Technologies in Hadapsar, Pune. Schedule a 30-minute discovery call to discuss your web, mobile, custom software, or AI automation project.',
 }

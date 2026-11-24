@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { siteConfig } from '@/lib/data/siteConfig'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | Sushiv Technologies',
+  title: 'Privacy Policy',
   description: 'Privacy Policy for Sushiv Technologies LLP. Learn how we handle client data and visitor privacy.',
 }
 

@@ -12,7 +12,7 @@ import { Button } from '@/components/ui/Button'
 import { CTASection } from '@/components/sections/CTASection'
 
 export const metadata: Metadata = {
-  title: 'Engagement Models & Hire Developers | Sushiv Technologies',
+  title: 'Engagement Models & Hire Developers',
   description:
     'Choose from fixed-scope projects, dedicated development squads, staff augmentation, and time & material. Flexible terms for your budget.',
 }

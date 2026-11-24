@@ -9,7 +9,7 @@ export interface NavLink {
 export const siteConfig = {
   name: 'Sushiv Technologies',
   legalName: 'Sushiv Technologies LLP',
-  url: 'https://sushiv.in',
+  url: 'https://www.sushiv.in',
   tagline: 'Software that grows with your business.',
   description:
     'Sushiv Technologies builds custom web, mobile, AI, and cloud solutions for startups, SMEs, and enterprises, with secure, scalable engineering and on-time delivery.',

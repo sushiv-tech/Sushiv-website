@@ -15,10 +15,15 @@ import { caseStudiesData } from '@/lib/data/caseStudies'
 import { buildWhatsAppLink } from '@/lib/whatsapp'
 
 export const metadata: Metadata = {
-  title: 'Case Studies & Architectural Solutions | Sushiv Technologies',
+  title: 'Case Studies & Architectural Solutions',
   description:
     'Explore engineering case studies from Sushiv Technologies. Proven business impact across custom ERPs, cloud healthcare portals, high-velocity CRMs, and AI automation.',
   openGraph: {
+    type: 'website',
+    locale: 'en_IN',
+    siteName: 'Sushiv Technologies',
+    url: './',
+    images: ['/opengraph-image'],
     title: 'Case Studies & Engineering Impact | Sushiv Technologies',
     description:
       'Proven engineering results across industrial automation, healthcare, real estate, and financial workflows.',
